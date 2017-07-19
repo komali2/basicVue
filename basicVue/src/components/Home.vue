@@ -1,17 +1,23 @@
 <template>
   <div class="home">
+    <searchbar></searchbar>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'home',
-    data() {
-      return {
+import Searchbar from './Searchbar';
 
-      };
-    },
-  };
+export default {
+  name: 'home',
+  components: {
+    Searchbar,
+  },
+  data() {
+    return {
+
+    };
+  },
+};
 </script>
 
 <style>
