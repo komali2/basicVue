@@ -8,6 +8,7 @@
 
 <script>
 import _ from 'underscore';
+import axios from 'axios';
 
 export default {
   name: 'searchbar',
@@ -26,7 +27,18 @@ export default {
   methods: {
     search: _.debounce(
       function search(term) {
-        console.log(term);
+        axios.get(`http://www.dnd5eapi.co/api/${term}`,
+          { headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
+          })
+        .then(function (response) {
+          // vm.answer = _.capitalize(response)
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       },
       // This is the number of milliseconds we wait for the
       // user to stop typing.
